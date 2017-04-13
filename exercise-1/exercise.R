@@ -19,8 +19,7 @@ View(this.year)
 only.one <- unique(this.year$year==1997)
 
 # Create a data.frame of 2-Wheel Drive vehicles that get more than 20 miles/gallon in the city
-more.than.twenty.gallons <- vehicles[vehicles$cty > 20,]
-more.than.twenty.gallons <- more.than.twenty.gallons[more.than.twenty.gallons$drive=="2-Wheel Drive",]
+more.than.twenty.gallons <- vehicles[vehicles$cty > 20 & vehicles$drive=="2-Wheel Drive",]
 View(more.than.twenty.gallons)
 # Of those vehicles, what is the vehicle ID of the vehicle with the worst hwy mpg?
 worst.id <- more.than.twenty.gallons$id[more.than.twenty.gallons$hwy==min(more.than.twenty.gallons$hwy)]
@@ -28,9 +27,10 @@ worst.id <- more.than.twenty.gallons$id[more.than.twenty.gallons$hwy==min(more.t
 # Write a function that takes a `year` and a `make` as parameters, and returns 
 # The vehicle that gets the most hwy miles/gallon of vehicles of that make in that year
 most.hwy <- function(this.year, this.make){
-  made.this.year <- vehicles[vehicles$year==this.year,]
-  most.hwy.of.the.year <- made.this.year$hwy[made.this.year$hwy==max(made.this.year$hwy)]
-  return (most.hwy.of.the.year)
+  made.this.year <- vehicles[vehicles$year==this.year & vehicles$make==this.make,]
+  most <- made.this.year$hwy[made.this.year$hwy==max(made.this.year$hwy)]
+  View(made.this.year)
+  return (most)
 }
 
 # What was the most efficient honda model of 1995?
