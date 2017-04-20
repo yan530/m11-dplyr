@@ -11,7 +11,7 @@ library(dplyr)
 
 # View in the data set. Start to understand what the data columns contains
 # Be sure to comment out the function so it won't view everytime you run the code.
-
+I opened it
 
 # Use 'colnames' to print out the names of the columns
 
